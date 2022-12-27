@@ -1,3 +1,4 @@
+//script variables
 let fields = document.getElementsByTagName("td");
 let playerOneTurn = true;
 let playerTwoTurn = false;
@@ -5,16 +6,19 @@ let playerBox = document.getElementsByClassName("player")[0];
 let audio = new Audio("win.mp3");
 let knock = new Audio("knock.mp3");
 
+//helper functions
 function getElementsByTag(index) {
   return document.getElementsByTagName("td")[index];
 }
 
+//adding event listeners to table fields
 for (let i = 0; i < fields.length; i++) {
   fields[i].addEventListener("click", function () {
     addImage(i);
   });
 }
 
+// add image to table field & alert winner if game over
 function addImage(index) {
   knock.play();
   if (fields[index].childNodes.length == 0) {
@@ -32,16 +36,18 @@ function addImage(index) {
       checkWinner();
     }
   } else {
-    alert("Already taken!");
+    alert("Field already occupied!");
   }
 }
 
+// create image in DOM 
 function createImage(location, src) {
   let img = document.createElement("img");
   img.src = src;
   location.appendChild(img);
 }
 
+//check if rows, colums or diagonals have the same images
 function checkEquality(array) {
   if (
     array.every((val, i, arr) => val === arr[0]) &&
@@ -53,6 +59,7 @@ function checkEquality(array) {
   }
 }
 
+//check if someone has won
 function checkWinner() {
   if (checkDiagonal() || checkColumns() || checkRows()) {
     audio.play();
@@ -60,6 +67,7 @@ function checkWinner() {
   }
 }
 
+//check diagonals
 function checkDiagonal() {
   let diagonal1 = [
     getElementsByTag(0).innerHTML,
@@ -78,6 +86,7 @@ function checkDiagonal() {
   }
 }
 
+//check rows
 function checkRows() {
   let row1 = [
     getElementsByTag(0).innerHTML,
@@ -101,6 +110,7 @@ function checkRows() {
   }
 }
 
+//check columns
 function checkColumns() {
   let column1 = [
     getElementsByTag(0).innerHTML,
@@ -128,6 +138,7 @@ function checkColumns() {
   }
 }
 
+//render endScreen after game is over 
 function renderEndScreen() {
   document.getElementsByTagName("table")[0].classList.add("d-none");
   let endScreen = document.createElement("h2");
