@@ -3,16 +3,18 @@ body {
   justify-content: center;
   height: 100vh;
   align-items: center;
+  background-image: url("images/christmas.jpg");
+  font-family: 'Roboto', sans-serif;
 }
-
 
 table {
   border-collapse: collapse;
-  width: 600px;
+  box-shadow: 0 2px 2px 1px rgb(0 0 0 / 14%);
+  width: 500px;
 }
 
 table td {
-  border: 5px solid black;
+  border: 5px solid #BB8873;
   width: 33%;
   height: 150px;
   text-align: center;
@@ -20,7 +22,7 @@ table td {
 
 td:hover {
   cursor: pointer;
-  background: rgba(0, 0, 0, .2);
+  background: #afb6cbaa
 }
 
 table tr:first-child td {
@@ -38,4 +40,57 @@ table tr td:last-child {
 
 img {
   width: 60px;
+}
+
+.title {
+  position: absolute;
+  top: 0;
+  color: #BB8873;
+}
+
+.player {
+  position: absolute;
+  left: 2rem;
+  bottom: 2rem;
+  margin: 0;
+  padding: 7px;
+  border-radius: 5px;
+  background: #BB8873;
+  color: white;
+}
+
+.restart {
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
+  margin: 0;
+  padding: 7px;
+  border-radius: 5px;
+  background: #BB8873;
+  color: white;
+  cursor: pointer;
+}
+
+.restart:hover {
+  background-color: #915d46;
+  transition: all 225ms ease-in-out;
+}
+
+.d-none {
+  display: none;
+}
+
+.winner {
+  padding: 25px;
+  border-radius: 5px;
+  background: #BB8873;
+  color: white;
+}
+
+@media all and (max-width: 500px) {
+  .winner {
+    background: white;
+    color: #915d46;
+    padding: 35px;
+  }
 }
